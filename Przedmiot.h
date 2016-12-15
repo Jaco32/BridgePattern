@@ -24,7 +24,7 @@ public:
       glebokosc = gl;
    }
    
-   virtual void spakuj() {}
+   virtual void spakuj() = 0;
    
    virtual ~Przedmiot() {}
 };
