@@ -7,9 +7,9 @@ using namespace std;
 
 class Opakowanie {
 public:
-   virtual void spakuj_dlugopis() {}
-   virtual void spakuj_ksiazke() {}
-   virtual void spakuj_buty() {}
+   virtual void spakuj_dlugopis() = 0;
+   virtual void spakuj_ksiazke() = 0;
+   virtual void spakuj_buty() = 0;
    virtual ~Opakowanie() {}
 };
 
