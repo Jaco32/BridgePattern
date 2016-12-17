@@ -1,23 +1,25 @@
 #ifndef PRZEDMIOT_H
 #define PRZEDMIOT_H
 
+#include <memory>
+#include <utility>
 #include "Opakowanie.h"
 
 class Przedmiot {
 protected:
-   Opakowanie* opakowanie;
+   unique_ptr<Opakowanie> opakowanie;
    float waga; // gramy
    float szerokosc; // cm
    float wysokosc;  // cm
    float glebokosc; // cm
 public:
-   Przedmiot(Opakowanie* o,
+   Przedmiot(unique_ptr<Opakowanie> o,
              float wg,
              float sz,
              float wy,
              float gl)
    {
-      opakowanie = o;
+      opakowanie = std::move(o);
       waga = wg;
       szerokosc = sz;
       wysokosc = wy;
@@ -31,11 +33,11 @@ public:
 
 class Dlugopis: public Przedmiot {
 public:
-   Dlugopis(Opakowanie *o,
+   Dlugopis(unique_ptr<Opakowanie> o,
             float wg,
             float sz,
             float wy,
-            float gl) : Przedmiot(o, wg, sz, wy, gl) {}
+            float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
       opakowanie->spakuj_dlugopis();
@@ -44,11 +46,11 @@ public:
 
 class Ksiazka: public Przedmiot {
 public:
-   Ksiazka(Opakowanie *o,
+   Ksiazka(unique_ptr<Opakowanie> o,
            float wg,
            float sz,
            float wy,
-           float gl) : Przedmiot(o, wg, sz, wy, gl) {}
+           float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
       opakowanie->spakuj_ksiazke();
@@ -57,11 +59,11 @@ public:
 
 class Buty: public Przedmiot {
 public:
-   Buty(Opakowanie *o,
+   Buty(unique_ptr<Opakowanie> o,
         float wg,
         float sz,
         float wy,
-        float gl) : Przedmiot(o, wg, sz, wy, gl) {}
+        float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
       opakowanie->spakuj_buty();
