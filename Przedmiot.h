@@ -40,7 +40,7 @@ public:
             float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
-      opakowanie->spakuj_dlugopis();
+      opakowanie->spakuj_dlugopis(waga, szerokosc, wysokosc, glebokosc);
    }
 };
 
@@ -53,7 +53,7 @@ public:
            float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
-      opakowanie->spakuj_ksiazke();
+      opakowanie->spakuj_ksiazke(waga, szerokosc, wysokosc, glebokosc);
    }
 };
 
@@ -66,7 +66,7 @@ public:
         float gl) : Przedmiot(std::move(o), wg, sz, wy, gl) {}
 
    void spakuj() {
-      opakowanie->spakuj_buty();
+      opakowanie->spakuj_buty(waga, szerokosc, wysokosc, glebokosc);
    }
 };
 
